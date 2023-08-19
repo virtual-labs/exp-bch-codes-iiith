@@ -1,0 +1,76 @@
+.text-inp {
+    height: 2.5em;
+    width: 5em;
+    border: solid black;
+    border-radius: 0.5em;
+    background-color: #fff;
+    font-size: 1.25em;
+    color: blue;
+    text-align: center;
+}
+
+.text-inp-invisible {
+    height: 2.5em;
+    width: 5em;
+    border: solid white;
+    border-radius: 0.5em;
+    background-color: #fff;
+    font-size: 1.25em;
+    color: white;
+    text-align: center;
+}
+
+
+.text-inp-1 {
+    height: 2.5em;
+    width: 10em;
+    border: solid black;
+    border-radius: 0.5em;
+    background-color: #fff;
+    font-size: 1.25em;
+    color: blue;
+    text-align: center;
+}
+
+
+table {
+    width: 100%;
+}
+
+td,
+th {
+    border: 2px solid gray;
+    text-align: center;
+    padding-top: 5px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.scroll-box-1 {
+    overflow-x: scroll;
+}
+
+.bit1 {
+    height: 2em;
+    width: 10em;
+    padding-left: 0.7em;
+    border: solid black;
+    border-radius: 0.5em;
+    background-color: #fff;
+    font-size: 1em;
+    color: blue;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
