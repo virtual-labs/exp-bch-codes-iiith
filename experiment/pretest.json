@@ -58,9 +58,9 @@
         "question": "6. Consider the same example which we discussed in the theory of this experiment (Example 3).For the $(15, 5, 7)$ triple-error-correcting BCH code, suppose that $\\mathbf{v} = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]$  is transmitted, and the vector $\\mathbf{r} = [0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0]$ is received. Then $\\mathbf{r}(X) = X^{3}+X^{5}+X^{12}$. Assume that we have performed Berlekamp's iterative algorithm up to the 3rd iteration (i.e, $\\mu = 3$) and is provided in the Table 6. <img src='./images/exp9-fig6.png'></img>",
         "answers": {
           "a": "$0$",
-          "b": "$\alpha^{10}$",
+          "b": "$\\alpha^{10}$",
           "c": "$1$",
-          "d": "$\alpha^{3}$"
+          "d": "$\\alpha^{3}$"
         },
         "correctAnswer": "b",
         "difficulty": "beginner"
