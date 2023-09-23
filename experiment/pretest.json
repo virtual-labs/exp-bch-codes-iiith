@@ -1,39 +1,69 @@
 {
-  "version": 2.0,
-  "questions": [
-    {
-      "question": "This is a Sample Question 1?",
-      "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+    "version": 2.0,
+    "questions": [
+      {
+        "question": "In the following questions, wherever required, use the Galois fields $$\\mathbb{F}_{2^{3}} = \\{ 0, 1, \\alpha, \\alpha^{2}, \\alpha^{3} = 1+\\alpha, \\alpha^{4} = \\alpha+\\alpha^{2}, \\alpha^{5}=1+\\alpha+\\alpha^{2}, \\alpha^{6}= 1+\\alpha^{2}  \\} \\, \\text{and} $$ $$ \\mathbb{F}_{2^{4}} = \\{ & 0, 1, \\alpha, \\alpha^{2}, \\alpha^{3}, \\alpha^{4} = 1+\\alpha, \\alpha^{5} = \\alpha+\\alpha^{2}, \\alpha^{6}=\\alpha^{2}+\\alpha^{3}, \\alpha^{7}= 1+\\alpha+\\alpha^{3}, \\\\ & \\alpha^{8} = 1+\\alpha^{2}, \\alpha^{9} =\\alpha+\\alpha^{3}, \\alpha^{10}=1+\\alpha+\\alpha^{2}, \\alpha^{11}=\\alpha+\\alpha^{2}+\\alpha^{3},\\\\ & \\alpha^{12}=1+\\alpha+\\alpha^{2}+\\alpha^{3}, \\alpha^{13}=1+\\alpha^{2}+\\alpha^{3}, \\alpha^{14} = 1+\\alpha^{3} \\}. \\\\ \\\\ 1. Which one of the following cannot be a binary primitive BCH code of the length?$$",
+        "answers": {
+          "a": "$n=127$",
+          "b": "$n=63$",
+          "c": "$n=1023$",
+          "d": "$n=509$"
+        },
+        "correctAnswer": "d",
+        "difficulty": "beginner"
       },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+      {
+        "question": "2. The generator polynomial $\\mathbf{g}(X)$ of the  $t-$error correcting binary primitive BCH code is ?",
+        "answers": {
+          "a": "$\\mathbf{g}(X) = $ LCM $ \\{\\phi_{1}(X), \\phi_{2}(X), \\ldots , \\phi_{2t}(X) \\}$",
+          "b": "$\\mathbf{g}(X) = \\text{LCM} \\, \\, \\{\\phi_{2}(X), \\phi_{4}(X), \\phi_{6}(X), \\ldots , \\phi_{2t}(X) \\}$",
+          "c": "$\\mathbf{g}(X) = \\text{LCM} \\, \\, \\{\\phi_{1}(X), \\phi_{3}(X), \\phi_{5}(X), \\ldots , \\phi_{2t-1}(X) \\}$",
+          "d": "Both (A) and (C)"
+        },
+        "correctAnswer": "d",
+        "difficulty": "beginner"
       },
-      "correctAnswer": "a",
-      "difficulty": "beginner"
-    },
-    {
-      "question": "This is a Sample Question 2?",
-      "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+      {
+        "question": "3. The generator polynomial $\\mathbf{g}(X)$ of the  $2-$error correcting binary primitive BCH code of length $n=15$ is ",
+        "answers": {
+          "a": "$1+X+X^{2}+X^{3}+X^{4}$",
+          "b": "$1+X+X^{4}+X^{6}+X^{8}$",
+          "c": "$1+X^{4}+X^{6}+X^{7}+X^{8}$",
+          "d": "None of the above"
+        },
+        "correctAnswer": "b",
+        "difficulty": "beginner"
       },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+      {
+        "question": "4. In BCH code, suppose the generator polynomial $\\mathbf{g}(X)$  has $2t+1$ number of non-zero coefficients, then $\\mathbf{g}(X)$ is the codeword polynomial of the codeword with the weight equal to $d_{min}$.",
+        "answers": {
+          "a": "Yes",
+          "b": "No"
+        },
+        "correctAnswer": "a",
+        "difficulty": "beginner"
       },
-      "correctAnswer": "c",
-      "difficulty": "beginner"
-    }
-  ]
-}
+      {
+        "question": "5. Suppose the received polynomial of the $(15, 5, 7)$ triple-error-correcting BCH code is  $\\mathbf{r}(X) = X+X^{2}+X^{3}$ , then the corresponding syndrome vector is ",
+        "answers": {
+          "a": "$ \\begin{bmatrix} \\alpha^{2} & 1 & \\alpha^{3} & 1 & \\alpha^{6} & \\alpha^{5} \\end{bmatrix}$",
+          "b": "$ \\begin{bmatrix} 1 & \\alpha & \\alpha^{10} & \\alpha^{4}  & \\alpha^{10} & \\alpha^{5} \\end{bmatrix}$",
+          "c": "$\\begin{bmatrix} \\alpha^{11} & \\alpha^{7} & \\alpha^{11} & \\alpha^{14} & 0 & \\alpha^{7} \\end{bmatrix}$",
+          "d": "$\\begin{bmatrix} \\alpha^{2}  & \\alpha^{3}  & \\alpha^{5}  & \\alpha^{7} & 0 & \\alpha^6 \\end{bmatrix} $"
+        },
+        "correctAnswer": "c",
+        "difficulty": "beginner"
+      },
+      {
+        "question": "6. Consider the same example which we discussed in the theory of this experiment (Example 3).For the $(15, 5, 7)$ triple-error-correcting BCH code, suppose that $\\mathbf{v} = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]$  is transmitted, and the vector $\\mathbf{r} = [0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0]$ is received. Then $\\mathbf{r}(X) = X^{3}+X^{5}+X^{12}$. Assume that we have performed Berlekamp's iterative algorithm up to the 3rd iteration (i.e, $\\mu = 3$) and is provided in the Table 6. <img src='./images/exp9-fig6.png'></img>",
+        "answers": {
+          "a": "$0$",
+          "b": "$\alpha^{10}$",
+          "c": "$1$",
+          "d": "$\alpha^{3}$"
+        },
+        "correctAnswer": "b",
+        "difficulty": "beginner"
+      }
+    ]
+  }
