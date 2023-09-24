@@ -28,7 +28,7 @@
         "answers": {
           "a": "$1+X+\\alpha^{5}X^{3}$",
           "b": "$1+X+\\alpha^{10}X^{2}$",
-          "c": "$1+X+\alpha^{5}X^{2}$",
+          "c": "$1+X+\\alpha^{5}X^{2}$",
           "d": "None of the above"
         },
         "correctAnswer": "c",
