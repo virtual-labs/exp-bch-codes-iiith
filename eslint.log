@@ -1,0 +1,36 @@
+
+/home/runner/work/exp-bch-codes-iiith/exp-bch-codes-iiith/experiment/simulation/js/decoding.js
+   82:10  warning  'replaceAlpha' is defined but never used    no-unused-vars
+   86:10  warning  'check1' is defined but never used          no-unused-vars
+  133:10  warning  'confirmtable1' is defined but never used   no-unused-vars
+  175:10  warning  'confirmtable2' is defined but never used   no-unused-vars
+  217:10  warning  'confirmtable3' is defined but never used   no-unused-vars
+  260:10  warning  'confirmtable4' is defined but never used   no-unused-vars
+  300:10  warning  'confirmtable5' is defined but never used   no-unused-vars
+  339:10  warning  'check2' is defined but never used          no-unused-vars
+  375:10  warning  'check3' is defined but never used          no-unused-vars
+  404:10  warning  'check4' is defined but never used          no-unused-vars
+  453:10  warning  'confirmtable6' is defined but never used   no-unused-vars
+  493:10  warning  'confirmtable7' is defined but never used   no-unused-vars
+  533:10  warning  'confirmtable8' is defined but never used   no-unused-vars
+  574:10  warning  'confirmtable9' is defined but never used   no-unused-vars
+  614:10  warning  'confirmtable10' is defined but never used  no-unused-vars
+  654:10  warning  'confirmtable11' is defined but never used  no-unused-vars
+  695:10  warning  'confirmtable12' is defined but never used  no-unused-vars
+  735:10  warning  'check5' is defined but never used          no-unused-vars
+  774:10  warning  'check6' is defined but never used          no-unused-vars
+  803:10  warning  'next' is defined but never used            no-unused-vars
+  882:10  warning  'previous' is defined but never used        no-unused-vars
+
+/home/runner/work/exp-bch-codes-iiith/exp-bch-codes-iiith/experiment/simulation/js/generator-polynomial.js
+    1:10  warning  'change1' is defined but never used  no-unused-vars
+   16:10  warning  'change2' is defined but never used  no-unused-vars
+   32:10  warning  'check1' is defined but never used   no-unused-vars
+   73:10  warning  'check2' is defined but never used   no-unused-vars
+  115:10  warning  'verify1' is defined but never used  no-unused-vars
+  143:10  warning  'verify2' is defined but never used  no-unused-vars
+  178:10  warning  'page1' is defined but never used    no-unused-vars
+  197:10  warning  'page2' is defined but never used    no-unused-vars
+
+✖ 29 problems (0 errors, 29 warnings)
+
