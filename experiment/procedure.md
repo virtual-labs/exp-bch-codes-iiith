@@ -1,5 +1,6 @@
 There are two tasks in Simulation:
 <br>
+
 **Procedure for Generator Polynomial:**
 
 1. Initially, all the polynomials are in grey background.
