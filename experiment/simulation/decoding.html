@@ -1,801 +1,1351 @@
 <!DOCTYPE html>
 <html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css">
-	<link rel="stylesheet" href="./css/main.css">
-	<link rel="stylesheet" href="./css/decoding.css">
-
-
-	<title>
-		Decoding
-	</title>
-</head>
-
-<body>
-
-	<div class="container">
-		<div class="columns is-centered">
-			<div class="column is-one-quarter v-instruction-title">
-				Tasks
-			</div>
-			<div class="column">
-				<div class="v-tabs">
-					<ul>
-
-						<li id="Task1" onclick="window.location.href = 'index.html';">
-							<a>
-								Generator Polynomial
-							</a>
-						</li>
-
-						<li class="is-active" id="Task2">
-							<a>
-								Decoding
-							</a>
-						</li>
-
-					</ul>
-				</div>
-			</div>
-		</div>
-
-		<div class="columns is-centered">
-			<div class="column">
-				<div class="v-collapsible-instruction-container v-instruction-container">
-					<div class="v-collapsible is-size-5">Instructions</div>
-					<div class="v-content" style="text-align: left; padding-left: 10%; padding-right: 10%;">
-						<ul style="list-style: disc;">
-							<b>Quick theory overview:</b>
-							<li>
-								Read the theory thoroughly before attempting this task.
-							</li>
-						</ul>
-
-						<br>
-
-						<ul style="list-style: disc;">
-							<b>Procedure:</b>
-							<li>
-								Typing alpha on the keyboard displays the symbol &alpha;. Expressions like
-								&alpha;<sup>2</sup> can be entered in the field by typing alpha^2 on the keyboard.
-							</li>
-							<li>
-								Initially, all the fields except those for entering syndromes are disabled. Subsequent
-								fields will be enabled sequentially upon correct entry of preceding ones.
-							</li>
-							<li>
-								Enter the syndromes in the provided fields. Begin with the leftmost field for the first
-								syndrome, then proceed to the adjacent fields for the subsequent syndromes.
-								After entering all the syndromes in the corresponding fields, click on <b>Submit</b>.
-							</li>
-							<li>
-								The correctness of the entered answer is displayed in <b>Observations</b>.
-							</li>
-							<li>
-								If all the syndromes are entered correctly, the syndrome fields will be disabled and the
-								first row of the table is enabled.
-							</li>
-							<li>
-								In d<sub>&#956;</sub>, l<sub>&#956;</sub> and &#956;-l<sub>&#956;</sub> fields, only
-								numbers needs to be enetered.
-							</li>
-							<li>
-								In the &#963;<sup>(&#956;)</sup>(X) field, polynomial needs to be entered.
-							</li>
-							<li>
-								Use only <b>upper case</b> X in the field. Enter the polynomials in increasing
-								order of degree (from the lowest degree
-								term to the highest). The coefficient (which might be a power of &alpha;) must always
-								precede the variable X. For example the polynomial in a field can be 1+α^2X+α^3X^2.
-							</li>
-							<li>
-								α^3X^2+α^2X+1 is not allowed because the degree is not from lowest to highest.
-								1+Xα^2+α^3X^2
-								is not allowed because α^2, which is the coefficient is written after X.
-							</li>
-							<li>
-								Enter values in all the fields of a row and click on <b>Submit</b>.
-							</li>
-							<li>
-								The correctness of the entered answer is displayed in <b>Observations</b>.
-							</li>
-							<li>
-								If the answer is correct, proceed to the next row. Values in the fields in a row cannot
-								be entered without completing the previous row correctly.
-							</li>
-							<li>
-								After successfully entering all the rows in the table, enter the roots of the error
-								locator polynomial in the fields provided and click on <b>Submit</b>.
-							</li>
-							<li>
-								The correctness of the entered answer is displayed in <b>Observations</b>
-							</li>
-							<li>
-								If the answer is correct, the decoded codeword field will be enabled. Enter the decoded
-								codeword and click on <b>Submit</b>.
-							</li>
-							<li>
-								If the correct answer is entered, a message indicating that the decoding algorithm has
-								been successfully completed will be displayed in <b>Observations</b>.
-							</li>
-							<li>
-								<b>Next</b> - Displays the next example.
-							</li>
-							<li>
-								<b>Previous</b> - Displays the previous example.
-							</li>
-
-
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<br>
-
-	<section id="example1">
-
-		<div class="columns is-centered">
-			<div class="column is-11-desktop is-12-tablet is-12-mobile">
-				<div class="v-datalist-container components-list">
-					<br>
-					<p>
-						Consider the <b>2</b>-error correcting BCH code of length 15
-						defined over GF(2<sup>4</sup>) generated by the polynomial x<sup>4</sup>+x+1. Decode the
-						received vector <span style="color:blue"><b>110001100110000</b></span> using Berlekamp-Massey
-						algorithm.
-					</p>
-					<br>
-				</div>
-			</div>
-		</div>
-
-		<div class="columns is-centered is-flex-direction-row is-flex-wrap-wrap is-align-content-start"
-			style="margin-top:-1.5%">
-			<div class="column is-8-desktop is-12-tablet is-12-mobile">
-
-				<div class="box-question">
-					<br>
-					<form action="" method="get" id="form-1" autocomplete="off" onsubmit="return false">
-						Enter the syndromes<br><br>
-						<input id="syndrome-1" class="text-inp" oninput="this.value = this.value.replace(/\s+/g, '')"
-							onkeyup="replaceAlpha(this)"> &emsp;
-						<input id="syndrome-2" class="text-inp" oninput="this.value = this.value.replace(/\s+/g, '')"
-							onkeyup="replaceAlpha(this)"> &emsp;
-						<input id="syndrome-3" class="text-inp" oninput="this.value = this.value.replace(/\s+/g, '')"
-							onkeyup="replaceAlpha(this)"> &emsp;
-						<input id="syndrome-4" class="text-inp" oninput="this.value = this.value.replace(/\s+/g, '')"
-							onkeyup="replaceAlpha(this)"> &emsp;
-
-						<br><br>
-						<button class="v-button" role="button" id="submit-1" form="form-1" onclick="check1()">
-							Submit</button>
-					</form>
-					<br>
-
-					Fill the Berlekamp algorithm's iterative table.
-					<br>
-					<br>
-					<div class="scroll-box-1">
-						<table>
-
-							<tr>
-								<th>&#956;</th>
-								<th>&#963;<sup>(&#956;)</sup>(X)</th>
-								<th>d<sub>&#956;</sub></th>
-								<th>l<sub>&#956;</sub></th>
-								<th>&#956;-l<sub>&#956;</sub></th>
-							</tr>
-
-							<tr height="45px">
-								<td> &emsp; <b>-1</b> &emsp; </td>
-								<td> &emsp; <b>1</b> &emsp; </td>
-								<td> &emsp; <b>1</b> &emsp; </td>
-								<td> &emsp; <b>0</b> &emsp; </td>
-								<td> &emsp; <b>-1</b> &emsp; </td>
-							</tr>
-
-							<tr height="65px">
-								<form action="" method="get" id="form-2" autocomplete="off" onsubmit="return false">
-
-									<td> <br> <b>0 </b> </td>
-									<td>
-										<input id="table-1-row-2-column-2" class="text-inp-1"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-1-row-2-column-3" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-1-row-2-column-4" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-1-row-2-column-5" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-
-										<button class="v-button" role="button" id="submit-2" form="form-2"
-											onclick="confirmtable1()" disabled> Submit </button>
-									</td>
-
-
-								</form>
-							</tr>
-
-							<tr height="65px">
-								<form action="" method="get" id="form-3" autocomplete="off" onsubmit="return false">
-
-									<td> <br> <b>1 </b> </td>
-									<td>
-										<input id="table-1-row-3-column-2" class="text-inp-1"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-1-row-3-column-3" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-1-row-3-column-4" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-1-row-3-column-5" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-
-										<button class="v-button" role="button" id="submit-3" form="form-3"
-											onclick="confirmtable2()" disabled> Submit </button>
-									</td>
-
-
-								</form>
-
-							</tr>
-
-							<tr height="65px">
-								<form action="" method="get" id="form-4" autocomplete="off" onsubmit="return false">
-
-									<td> <br> <b>2 </b> </td>
-									<td>
-										<input id="table-1-row-4-column-2" class="text-inp-1"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-1-row-4-column-3" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-1-row-4-column-4" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-1-row-4-column-5" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-
-										<button class="v-button" role="button" id="submit-4" form="form-4"
-											onclick="confirmtable3()" disabled> Submit </button>
-									</td>
-
-
-								</form>
-
-							</tr>
-
-							<tr height="65px">
-								<form action="" method="get" id="form-5" autocomplete="off" onsubmit="return false">
-
-									<td> <br> <b>3 </b> </td>
-									<td>
-										<input id="table-1-row-5-column-2" class="text-inp-1"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-1-row-5-column-3" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-1-row-5-column-4" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-1-row-5-column-5" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-
-										<button class="v-button" role="button" id="submit-5" form="form-5"
-											onclick="confirmtable4()" disabled> Submit </button>
-									</td>
-
-
-								</form>
-
-							</tr>
-
-							<tr height="65px">
-								<form action="" method="get" id="form-6" autocomplete="off" onsubmit="return false">
-
-									<td> <br> <b>4 </b> </td>
-									<td>
-										<input id="table-1-row-6-column-2" class="text-inp-1"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<!-- <input id="table-1-row-6-column-3" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled> -->
-									</td>
-
-									<td>
-										<!-- <input id="table-1-row-6-column-4" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled> -->
-									</td>
-
-									<td>
-										<input class="text-inp-invisible" disabled>
-										<!-- Added this invisible input class to align the submits -->
-
-										<button class="v-button" role="button" id="submit-6" form="form-6"
-											onclick="confirmtable5()" disabled> Submit </button>
-									</td>
-
-
-								</form>
-
-							</tr>
-
-
-						</table>
-					</div>
-
-					<form action="" method="get" id="form-7" autocomplete="off" onsubmit="return false">
-						<br>
-						Enter the roots of the error locator polynomial <br><br>
-						<input id="root-1" class="text-inp" oninput="this.value = this.value.replace(/\s+/g, '')"
-							onkeyup="replaceAlpha(this)" disabled>
-						<input id="root-2" class="text-inp" oninput="this.value = this.value.replace(/\s+/g, '')"
-							onkeyup="replaceAlpha(this)" disabled>
-						<br>
-						<br>
-						<button class="v-button" role="button" id="submit-7" form="form-7" onclick="check2()" disabled>
-							Submit</button>
-						<br>
-						<br>
-					</form>
-
-					<form action="" method="get" id="form-8" autocomplete="off" onsubmit="return false">
-						<label for="decode-ex-1"> Enter the decoded codeword</label>
-						<input type="number" class="bit1" id="decode-ex-1" disabled>
-
-						<br>
-						<br>
-						<button class="v-button" role="button" id="submit-8" form="form-8" onclick="check3()" disabled>
-							Submit</button>
-
-						<button class="v-button" role="button" form="form-8" onclick="next()">Next</button>
-					</form>
-
-				</div>
-			</div>
-
-			<div class="column is-3-desktop is-4-tablet is-12-mobile">
-				<div class="v-datalist-container components-list">
-					<div class="v-datalist-title">Observations</div>
-					<div id="observations1">
-
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</section>
-
-	<section id="example2" style="display: none;">
-
-		<div class="columns is-centered">
-			<div class="column is-11-desktop is-12-tablet is-12-mobile">
-				<div class="v-datalist-container components-list">
-					<br>
-					<p>
-						Consider the <b>3</b>-error correcting BCH code of length 15
-						defined over GF(2<sup>4</sup>) generated by the polynomial x<sup>4</sup>+x+1. Decode the
-						received vector <span style="color:blue"><b>010011010100000</b></span> using Berlekamp-Massey
-						algorithm.
-					</p>
-					<br>
-				</div>
-			</div>
-		</div>
-
-		<div class="columns is-centered is-flex-direction-row is-flex-wrap-wrap is-align-content-start"
-			style="margin-top:-1.5%">
-			<div class="column is-8-desktop is-12-tablet is-12-mobile">
-
-				<div class="box-question">
-					<br>
-					<form action="" method="get" id="form-9" autocomplete="off" onsubmit="return false">
-						Enter the syndromes<br><br>
-						<input id="syndrome-5" class="text-inp" oninput="this.value = this.value.replace(/\s+/g, '')"
-							onkeyup="replaceAlpha(this)"> &emsp;
-						<input id="syndrome-6" class="text-inp" oninput="this.value = this.value.replace(/\s+/g, '')"
-							onkeyup="replaceAlpha(this)"> &emsp;
-						<input id="syndrome-7" class="text-inp" oninput="this.value = this.value.replace(/\s+/g, '')"
-							onkeyup="replaceAlpha(this)"> &emsp;
-						<input id="syndrome-8" class="text-inp" oninput="this.value = this.value.replace(/\s+/g, '')"
-							onkeyup="replaceAlpha(this)"> &emsp;
-						<input id="syndrome-9" class="text-inp" oninput="this.value = this.value.replace(/\s+/g, '')"
-							onkeyup="replaceAlpha(this)"> &emsp;
-						<input id="syndrome-10" class="text-inp" oninput="this.value = this.value.replace(/\s+/g, '')"
-							onkeyup="replaceAlpha(this)"> &emsp;
-
-						<br><br>
-						<button class="v-button" role="button" id="submit-9" form="form-9" onclick="check4()">
-							Submit</button>
-					</form>
-					<br>
-
-					Fill the Berlekamp algorithm's iterative table.
-					<br>
-					<br>
-					<div class="scroll-box-1">
-						<table>
-
-							<tr>
-								<th>&#956;</th>
-								<th>&#963;<sup>(&#956;)</sup>(X)</th>
-								<th>d<sub>&#956;</sub></th>
-								<th>l<sub>&#956;</sub></th>
-								<th>&#956;-l<sub>&#956;</sub></th>
-							</tr>
-
-							<tr height="45px">
-								<td> &emsp; <b>-1</b> &emsp; </td>
-								<td> &emsp; <b>1</b> &emsp; </td>
-								<td> &emsp; <b>1</b> &emsp; </td>
-								<td> &emsp; <b>0</b> &emsp; </td>
-								<td> &emsp; <b>-1</b> &emsp; </td>
-							</tr>
-
-							<tr height="65px">
-								<form action="" method="get" id="form-10" autocomplete="off" onsubmit="return false">
-
-									<td> <br> <b>0 </b> </td>
-									<td>
-										<input id="table-2-row-2-column-2" class="text-inp-1"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-2-row-2-column-3" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-2-row-2-column-4" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-2-row-2-column-5" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-
-										<button class="v-button" role="button" id="submit-10" form="form-10"
-											onclick="confirmtable6()" disabled> Submit </button>
-									</td>
-
-
-								</form>
-							</tr>
-
-							<tr height="65px">
-								<form action="" method="get" id="form-11" autocomplete="off" onsubmit="return false">
-
-									<td> <br> <b>1 </b> </td>
-									<td>
-										<input id="table-2-row-3-column-2" class="text-inp-1"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-2-row-3-column-3" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-2-row-3-column-4" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-2-row-3-column-5" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-
-										<button class="v-button" role="button" id="submit-11" form="form-11"
-											onclick="confirmtable7()" disabled> Submit </button>
-									</td>
-
-
-								</form>
-
-							</tr>
-
-							<tr height="65px">
-								<form action="" method="get" id="form-12" autocomplete="off" onsubmit="return false">
-
-									<td> <br> <b>2 </b> </td>
-									<td>
-										<input id="table-2-row-4-column-2" class="text-inp-1"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-2-row-4-column-3" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-2-row-4-column-4" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-2-row-4-column-5" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-
-										<button class="v-button" role="button" id="submit-12" form="form-12"
-											onclick="confirmtable8()" disabled> Submit </button>
-									</td>
-
-
-								</form>
-
-							</tr>
-
-							<tr height="65px">
-								<form action="" method="get" id="form-13" autocomplete="off" onsubmit="return false">
-
-									<td> <br> <b>3 </b> </td>
-									<td>
-										<input id="table-2-row-5-column-2" class="text-inp-1"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-2-row-5-column-3" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-2-row-5-column-4" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-2-row-5-column-5" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-
-										<button class="v-button" role="button" id="submit-13" form="form-13"
-											onclick="confirmtable9()" disabled> Submit </button>
-									</td>
-
-
-								</form>
-
-							</tr>
-
-							<tr height="65px">
-								<form action="" method="get" id="form-14" autocomplete="off" onsubmit="return false">
-
-									<td> <br> <b>4 </b> </td>
-									<td>
-										<input id="table-2-row-6-column-2" class="text-inp-1"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-2-row-6-column-3" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-2-row-6-column-4" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-2-row-6-column-5" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-
-										<button class="v-button" role="button" id="submit-14" form="form-14"
-											onclick="confirmtable10()" disabled> Submit </button>
-									</td>
-
-
-								</form>
-
-							</tr>
-
-							<tr height="65px">
-								<form action="" method="get" id="form-15" autocomplete="off" onsubmit="return false">
-
-									<td> <br> <b>5 </b> </td>
-									<td>
-										<input id="table-2-row-7-column-2" class="text-inp-1"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-2-row-7-column-3" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-2-row-7-column-4" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<input id="table-2-row-7-column-5" class="text-inp"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-
-										<button class="v-button" role="button" id="submit-15" form="form-15"
-											onclick="confirmtable11()" disabled> Submit </button>
-									</td>
-
-
-								</form>
-
-							</tr>
-
-							<tr height="65px">
-								<form action="" method="get" id="form-16" autocomplete="off" onsubmit="return false">
-
-									<td> <br> <b>6 </b> </td>
-									<td>
-										<input id="table-2-row-8-column-2" class="text-inp-1"
-											oninput="this.value = this.value.replace(/\s+/g, '')"
-											onkeyup="replaceAlpha(this)" disabled>
-									</td>
-
-									<td>
-										<!-- <input id="table-2-row-8-column-3" class="text-inp"
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css"
+      />
+      <link rel="stylesheet" href="./css/main.css" />
+      <link rel="stylesheet" href="./css/decoding.css" />
+
+      <title>Decoding</title>
+    </head>
+
+    <body>
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-one-quarter v-instruction-title">Tasks</div>
+          <div class="column">
+            <div class="v-tabs">
+              <ul>
+                <li id="Task1" onclick="window.location.href = 'index.html';">
+                  <a> Generator Polynomial </a>
+                </li>
+
+                <li class="is-active" id="Task2">
+                  <a> Decoding </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column">
+            <div
+              class="v-collapsible-instruction-container v-instruction-container"
+            >
+              <div class="v-collapsible is-size-5">Instructions</div>
+              <div
+                class="v-content"
+                style="text-align: left; padding-left: 10%; padding-right: 10%"
+              >
+                <ul style="list-style: disc">
+                  <b>Quick theory overview:</b>
+                  <li>
+                    Read the theory thoroughly before attempting this task.
+                  </li>
+                </ul>
+
+                <br />
+
+                <ul style="list-style: disc">
+                  <b>Procedure:</b>
+                  <li>
+                    Typing alpha on the keyboard displays the symbol &alpha;.
+                    Expressions like &alpha;<sup>2</sup> can be entered in the
+                    field by typing alpha^2 on the keyboard.
+                  </li>
+                  <li>
+                    Initially, all the fields except those for entering
+                    syndromes are disabled. Subsequent fields will be enabled
+                    sequentially upon correct entry of preceding ones.
+                  </li>
+                  <li>
+                    Enter the syndromes in the provided fields. Begin with the
+                    leftmost field for the first syndrome, then proceed to the
+                    adjacent fields for the subsequent syndromes. After entering
+                    all the syndromes in the corresponding fields, click on
+                    <b>Submit</b>.
+                  </li>
+                  <li>
+                    The correctness of the entered answer is displayed in
+                    <b>Observations</b>.
+                  </li>
+                  <li>
+                    If all the syndromes are entered correctly, the syndrome
+                    fields will be disabled and the first row of the table is
+                    enabled.
+                  </li>
+                  <li>
+                    In d<sub>&#956;</sub>, l<sub>&#956;</sub> and &#956;-l<sub
+                      >&#956;</sub
+                    >
+                    fields, only numbers needs to be enetered.
+                  </li>
+                  <li>
+                    In the &#963;<sup>(&#956;)</sup>(X) field, polynomial needs
+                    to be entered.
+                  </li>
+                  <li>
+                    Use only <b>upper case</b> X in the field. Enter the
+                    polynomials in increasing order of degree (from the lowest
+                    degree term to the highest). The coefficient (which might be
+                    a power of &alpha;) must always precede the variable X. For
+                    example the polynomial in a field can be 1+α^2X+α^3X^2.
+                  </li>
+                  <li>
+                    α^3X^2+α^2X+1 is not allowed because the degree is not from
+                    lowest to highest. 1+Xα^2+α^3X^2 is not allowed because α^2,
+                    which is the coefficient is written after X.
+                  </li>
+                  <li>
+                    Enter values in all the fields of a row and click on
+                    <b>Submit</b>.
+                  </li>
+                  <li>
+                    The correctness of the entered answer is displayed in
+                    <b>Observations</b>.
+                  </li>
+                  <li>
+                    If the answer is correct, proceed to the next row. Values in
+                    the fields in a row cannot be entered without completing the
+                    previous row correctly.
+                  </li>
+                  <li>
+                    After successfully entering all the rows in the table, enter
+                    the roots of the error locator polynomial in the fields
+                    provided and click on <b>Submit</b>.
+                  </li>
+                  <li>
+                    The correctness of the entered answer is displayed in
+                    <b>Observations</b>
+                  </li>
+                  <li>
+                    If the answer is correct, the decoded codeword field will be
+                    enabled. Enter the decoded codeword and click on
+                    <b>Submit</b>.
+                  </li>
+                  <li>
+                    If the correct answer is entered, a message indicating that
+                    the decoding algorithm has been successfully completed will
+                    be displayed in <b>Observations</b>.
+                  </li>
+                  <li><b>Next</b> - Displays the next example.</li>
+                  <li><b>Previous</b> - Displays the previous example.</li>
+                  <li>
+                    <b>Reset</b> - Clears all input fields, table entries, and
+                    empties the Observations section for the current example.
+                    Use this to start over or retry the decoding steps.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <section id="example1">
+        <div class="columns is-centered">
+          <div class="column is-11-desktop is-12-tablet is-12-mobile">
+            <div class="v-datalist-container components-list">
+              <br />
+              <p>
+                Consider the <b>2</b>-error correcting BCH code of length 15
+                defined over GF(2<sup>4</sup>) generated by the polynomial
+                x<sup>4</sup>+x+1. Decode the received vector
+                <span style="color: blue"><b>110001100110000</b></span> using
+                Berlekamp-Massey algorithm.
+              </p>
+              <br />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="columns is-centered is-flex-direction-row is-flex-wrap-wrap is-align-content-start"
+          style="margin-top: -1.5%"
+        >
+          <div class="column is-8-desktop is-12-tablet is-12-mobile">
+            <div class="box-question">
+              <br />
+              <form
+                action=""
+                method="get"
+                id="form-1"
+                autocomplete="off"
+                onsubmit="return false"
+              >
+                Enter the syndromes<br /><br />
+                <input
+                  id="syndrome-1"
+                  class="text-inp"
+                  oninput="this.value = this.value.replace(/\s+/g, '')"
+                  onkeyup="replaceAlpha(this)"
+                />
+                &emsp;
+                <input
+                  id="syndrome-2"
+                  class="text-inp"
+                  oninput="this.value = this.value.replace(/\s+/g, '')"
+                  onkeyup="replaceAlpha(this)"
+                />
+                &emsp;
+                <input
+                  id="syndrome-3"
+                  class="text-inp"
+                  oninput="this.value = this.value.replace(/\s+/g, '')"
+                  onkeyup="replaceAlpha(this)"
+                />
+                &emsp;
+                <input
+                  id="syndrome-4"
+                  class="text-inp"
+                  oninput="this.value = this.value.replace(/\s+/g, '')"
+                  onkeyup="replaceAlpha(this)"
+                />
+                &emsp;
+
+                <br /><br />
+                <button
+                  class="v-button"
+                  role="button"
+                  id="submit-1"
+                  form="form-1"
+                  onclick="check1()"
+                >
+                  Submit
+                </button>
+                <button
+                  class="v-button"
+                  role="button"
+                  id="reset-decoding-1"
+                  onclick="resetDecoding(1)"
+                >
+                  Reset
+                </button>
+              </form>
+              <br />
+
+              Fill the Berlekamp algorithm's iterative table.
+              <br />
+              <br />
+              <div class="scroll-box-1">
+                <table>
+                  <tr>
+                    <th>&#956;</th>
+                    <th>&#963;<sup>(&#956;)</sup>(X)</th>
+                    <th>d<sub>&#956;</sub></th>
+                    <th>l<sub>&#956;</sub></th>
+                    <th>&#956;-l<sub>&#956;</sub></th>
+                  </tr>
+
+                  <tr height="45px">
+                    <td>&emsp; <b>-1</b> &emsp;</td>
+                    <td>&emsp; <b>1</b> &emsp;</td>
+                    <td>&emsp; <b>1</b> &emsp;</td>
+                    <td>&emsp; <b>0</b> &emsp;</td>
+                    <td>&emsp; <b>-1</b> &emsp;</td>
+                  </tr>
+
+                  <tr height="65px">
+                    <form
+                      action=""
+                      method="get"
+                      id="form-2"
+                      autocomplete="off"
+                      onsubmit="return false"
+                    >
+                      <td>
+                        <br />
+                        <b>0 </b>
+                      </td>
+                      <td>
+                        <input
+                          id="table-1-row-2-column-2"
+                          class="text-inp-1"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          id="table-1-row-2-column-3"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          id="table-1-row-2-column-4"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          id="table-1-row-2-column-5"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+
+                        <button
+                          class="v-button"
+                          role="button"
+                          id="submit-2"
+                          form="form-2"
+                          onclick="confirmtable1()"
+                          disabled
+                        >
+                          Submit
+                        </button>
+                      </td>
+                    </form>
+                  </tr>
+
+                  <tr height="65px">
+                    <form
+                      action=""
+                      method="get"
+                      id="form-3"
+                      autocomplete="off"
+                      onsubmit="return false"
+                    >
+                      <td>
+                        <br />
+                        <b>1 </b>
+                      </td>
+                      <td>
+                        <input
+                          id="table-1-row-3-column-2"
+                          class="text-inp-1"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          id="table-1-row-3-column-3"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          id="table-1-row-3-column-4"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          id="table-1-row-3-column-5"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+
+                        <button
+                          class="v-button"
+                          role="button"
+                          id="submit-3"
+                          form="form-3"
+                          onclick="confirmtable2()"
+                          disabled
+                        >
+                          Submit
+                        </button>
+                      </td>
+                    </form>
+                  </tr>
+
+                  <tr height="65px">
+                    <form
+                      action=""
+                      method="get"
+                      id="form-4"
+                      autocomplete="off"
+                      onsubmit="return false"
+                    >
+                      <td>
+                        <br />
+                        <b>2 </b>
+                      </td>
+                      <td>
+                        <input
+                          id="table-1-row-4-column-2"
+                          class="text-inp-1"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          id="table-1-row-4-column-3"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          id="table-1-row-4-column-4"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          id="table-1-row-4-column-5"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+
+                        <button
+                          class="v-button"
+                          role="button"
+                          id="submit-4"
+                          form="form-4"
+                          onclick="confirmtable3()"
+                          disabled
+                        >
+                          Submit
+                        </button>
+                      </td>
+                    </form>
+                  </tr>
+
+                  <tr height="65px">
+                    <form
+                      action=""
+                      method="get"
+                      id="form-5"
+                      autocomplete="off"
+                      onsubmit="return false"
+                    >
+                      <td>
+                        <br />
+                        <b>3 </b>
+                      </td>
+                      <td>
+                        <input
+                          id="table-1-row-5-column-2"
+                          class="text-inp-1"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          id="table-1-row-5-column-3"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          id="table-1-row-5-column-4"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          id="table-1-row-5-column-5"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+
+                        <button
+                          class="v-button"
+                          role="button"
+                          id="submit-5"
+                          form="form-5"
+                          onclick="confirmtable4()"
+                          disabled
+                        >
+                          Submit
+                        </button>
+                      </td>
+                    </form>
+                  </tr>
+
+                  <tr height="65px">
+                    <form
+                      action=""
+                      method="get"
+                      id="form-6"
+                      autocomplete="off"
+                      onsubmit="return false"
+                    >
+                      <td>
+                        <br />
+                        <b>4 </b>
+                      </td>
+                      <td>
+                        <input
+                          id="table-1-row-6-column-2"
+                          class="text-inp-1"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
+
+                      <td>
+                        <!-- <input id="table-1-row-6-column-3" class="text-inp"
 											oninput="this.value = this.value.replace(/\s+/g, '')"
 											onkeyup="replaceAlpha(this)" disabled> -->
-									</td>
+                      </td>
 
-									<td>
-										<!-- <input id="table-2-row-8-column-4" class="text-inp"
+                      <td>
+                        <!-- <input id="table-1-row-6-column-4" class="text-inp"
 											oninput="this.value = this.value.replace(/\s+/g, '')"
 											onkeyup="replaceAlpha(this)" disabled> -->
-									</td>
+                      </td>
 
-									<td>
-										<input class="text-inp-invisible" disabled>
-										<!-- Added this invisible input class to align the submits -->
+                      <td>
+                        <input class="text-inp-invisible" disabled />
+                        <!-- Added this invisible input class to align the submits -->
 
-										<button class="v-button" role="button" id="submit-16" form="form-16"
-											onclick="confirmtable12()" disabled> Submit </button>
-									</td>
+                        <button
+                          class="v-button"
+                          role="button"
+                          id="submit-6"
+                          form="form-6"
+                          onclick="confirmtable5()"
+                          disabled
+                        >
+                          Submit
+                        </button>
+                      </td>
+                    </form>
+                  </tr>
+                </table>
+              </div>
 
+              <form
+                action=""
+                method="get"
+                id="form-7"
+                autocomplete="off"
+                onsubmit="return false"
+              >
+                <br />
+                Enter the roots of the error locator polynomial <br /><br />
+                <input
+                  id="root-1"
+                  class="text-inp"
+                  oninput="this.value = this.value.replace(/\s+/g, '')"
+                  onkeyup="replaceAlpha(this)"
+                  disabled
+                />
+                <input
+                  id="root-2"
+                  class="text-inp"
+                  oninput="this.value = this.value.replace(/\s+/g, '')"
+                  onkeyup="replaceAlpha(this)"
+                  disabled
+                />
+                <br />
+                <br />
+                <button
+                  class="v-button"
+                  role="button"
+                  id="submit-7"
+                  form="form-7"
+                  onclick="check2()"
+                  disabled
+                >
+                  Submit
+                </button>
+                <br />
+                <br />
+              </form>
 
-								</form>
+              <form
+                action=""
+                method="get"
+                id="form-8"
+                autocomplete="off"
+                onsubmit="return false"
+              >
+                <label for="decode-ex-1"> Enter the decoded codeword</label>
+                <input type="number" class="bit1" id="decode-ex-1" disabled />
 
-							</tr>
+                <br />
+                <br />
+                <button
+                  class="v-button"
+                  role="button"
+                  id="submit-8"
+                  form="form-8"
+                  onclick="check3()"
+                  disabled
+                >
+                  Submit
+                </button>
 
+                <button
+                  class="v-button"
+                  role="button"
+                  form="form-8"
+                  onclick="next()"
+                >
+                  Next
+                </button>
+              </form>
+            </div>
+          </div>
 
-						</table>
-					</div>
+          <div class="column is-3-desktop is-4-tablet is-12-mobile">
+            <div class="v-datalist-container components-list">
+              <div class="v-datalist-title">Observations</div>
+              <div id="observations1"></div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-					<form action="" method="get" id="form-17" autocomplete="off" onsubmit="return false">
-						<br>
-						Enter the roots of the error locator polynomial <br><br>
-						<input id="root-3" class="text-inp" oninput="this.value = this.value.replace(/\s+/g, '')"
-							onkeyup="replaceAlpha(this)" disabled>
-						<input id="root-4" class="text-inp" oninput="this.value = this.value.replace(/\s+/g, '')"
-							onkeyup="replaceAlpha(this)" disabled>
-						<input id="root-5" class="text-inp" oninput="this.value = this.value.replace(/\s+/g, '')"
-							onkeyup="replaceAlpha(this)" disabled>
-						<br>
-						<br>
-						<button class="v-button" role="button" id="submit-17" form="form-17" onclick="check5()"
-							disabled>
-							Submit</button>
-						<br>
-						<br>
-					</form>
+      <section id="example2" style="display: none">
+        <div class="columns is-centered">
+          <div class="column is-11-desktop is-12-tablet is-12-mobile">
+            <div class="v-datalist-container components-list">
+              <br />
+              <p>
+                Consider the <b>3</b>-error correcting BCH code of length 15
+                defined over GF(2<sup>4</sup>) generated by the polynomial
+                x<sup>4</sup>+x+1. Decode the received vector
+                <span style="color: blue"><b>010011010100000</b></span> using
+                Berlekamp-Massey algorithm.
+              </p>
+              <br />
+            </div>
+          </div>
+        </div>
 
-					<form action="" method="get" id="form-18" autocomplete="off" onsubmit="return false">
-						<label for="decode-ex-2"> Enter the decoded codeword</label>
-						<input type="number" class="bit1" id="decode-ex-2" disabled>
+        <div
+          class="columns is-centered is-flex-direction-row is-flex-wrap-wrap is-align-content-start"
+          style="margin-top: -1.5%"
+        >
+          <div class="column is-8-desktop is-12-tablet is-12-mobile">
+            <div class="box-question">
+              <br />
+              <form
+                action=""
+                method="get"
+                id="form-9"
+                autocomplete="off"
+                onsubmit="return false"
+              >
+                Enter the syndromes<br /><br />
+                <input
+                  id="syndrome-5"
+                  class="text-inp"
+                  oninput="this.value = this.value.replace(/\s+/g, '')"
+                  onkeyup="replaceAlpha(this)"
+                />
+                &emsp;
+                <input
+                  id="syndrome-6"
+                  class="text-inp"
+                  oninput="this.value = this.value.replace(/\s+/g, '')"
+                  onkeyup="replaceAlpha(this)"
+                />
+                &emsp;
+                <input
+                  id="syndrome-7"
+                  class="text-inp"
+                  oninput="this.value = this.value.replace(/\s+/g, '')"
+                  onkeyup="replaceAlpha(this)"
+                />
+                &emsp;
+                <input
+                  id="syndrome-8"
+                  class="text-inp"
+                  oninput="this.value = this.value.replace(/\s+/g, '')"
+                  onkeyup="replaceAlpha(this)"
+                />
+                &emsp;
+                <input
+                  id="syndrome-9"
+                  class="text-inp"
+                  oninput="this.value = this.value.replace(/\s+/g, '')"
+                  onkeyup="replaceAlpha(this)"
+                />
+                &emsp;
+                <input
+                  id="syndrome-10"
+                  class="text-inp"
+                  oninput="this.value = this.value.replace(/\s+/g, '')"
+                  onkeyup="replaceAlpha(this)"
+                />
+                &emsp;
 
-						<br>
-						<br>
-						<button class="v-button" role="button" id="submit-18" form="form-18" onclick="check6()"
-							disabled>
-							Submit</button>
+                <br /><br />
+                <button
+                  class="v-button"
+                  role="button"
+                  id="submit-9"
+                  form="form-9"
+                  onclick="check4()"
+                >
+                  Submit
+                </button>
+                <button
+                  class="v-button"
+                  role="button"
+                  id="reset-decoding-2"
+                  onclick="resetDecoding(2)"
+                >
+                  Reset
+                </button>
+              </form>
+              <br />
 
-						<button class="v-button" role="button" form="form-18" onclick="previous()">
-							Previous</button>
-					</form>
+              Fill the Berlekamp algorithm's iterative table.
+              <br />
+              <br />
+              <div class="scroll-box-1">
+                <table>
+                  <tr>
+                    <th>&#956;</th>
+                    <th>&#963;<sup>(&#956;)</sup>(X)</th>
+                    <th>d<sub>&#956;</sub></th>
+                    <th>l<sub>&#956;</sub></th>
+                    <th>&#956;-l<sub>&#956;</sub></th>
+                  </tr>
 
-				</div>
-			</div>
+                  <tr height="45px">
+                    <td>&emsp; <b>-1</b> &emsp;</td>
+                    <td>&emsp; <b>1</b> &emsp;</td>
+                    <td>&emsp; <b>1</b> &emsp;</td>
+                    <td>&emsp; <b>0</b> &emsp;</td>
+                    <td>&emsp; <b>-1</b> &emsp;</td>
+                  </tr>
 
-			<div class="column is-3-desktop is-4-tablet is-12-mobile">
-				<div class="v-datalist-container components-list">
-					<div class="v-datalist-title">Observations</div>
-					<div id="observations2">
+                  <tr height="65px">
+                    <form
+                      action=""
+                      method="get"
+                      id="form-10"
+                      autocomplete="off"
+                      onsubmit="return false"
+                    >
+                      <td>
+                        <br />
+                        <b>0 </b>
+                      </td>
+                      <td>
+                        <input
+                          id="table-2-row-2-column-2"
+                          class="text-inp-1"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
 
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+                      <td>
+                        <input
+                          id="table-2-row-2-column-3"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
 
+                      <td>
+                        <input
+                          id="table-2-row-2-column-4"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
 
+                      <td>
+                        <input
+                          id="table-2-row-2-column-5"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
 
+                        <button
+                          class="v-button"
+                          role="button"
+                          id="submit-10"
+                          form="form-10"
+                          onclick="confirmtable6()"
+                          disabled
+                        >
+                          Submit
+                        </button>
+                      </td>
+                    </form>
+                  </tr>
 
-	<script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
-	<script src="./js/decoding.js"></script>
-</body>
+                  <tr height="65px">
+                    <form
+                      action=""
+                      method="get"
+                      id="form-11"
+                      autocomplete="off"
+                      onsubmit="return false"
+                    >
+                      <td>
+                        <br />
+                        <b>1 </b>
+                      </td>
+                      <td>
+                        <input
+                          id="table-2-row-3-column-2"
+                          class="text-inp-1"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
 
+                      <td>
+                        <input
+                          id="table-2-row-3-column-3"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          id="table-2-row-3-column-4"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          id="table-2-row-3-column-5"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+
+                        <button
+                          class="v-button"
+                          role="button"
+                          id="submit-11"
+                          form="form-11"
+                          onclick="confirmtable7()"
+                          disabled
+                        >
+                          Submit
+                        </button>
+                      </td>
+                    </form>
+                  </tr>
+
+                  <tr height="65px">
+                    <form
+                      action=""
+                      method="get"
+                      id="form-12"
+                      autocomplete="off"
+                      onsubmit="return false"
+                    >
+                      <td>
+                        <br />
+                        <b>2 </b>
+                      </td>
+                      <td>
+                        <input
+                          id="table-2-row-4-column-2"
+                          class="text-inp-1"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          id="table-2-row-4-column-3"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          id="table-2-row-4-column-4"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          id="table-2-row-4-column-5"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+
+                        <button
+                          class="v-button"
+                          role="button"
+                          id="submit-12"
+                          form="form-12"
+                          onclick="confirmtable8()"
+                          disabled
+                        >
+                          Submit
+                        </button>
+                      </td>
+                    </form>
+                  </tr>
+
+                  <tr height="65px">
+                    <form
+                      action=""
+                      method="get"
+                      id="form-13"
+                      autocomplete="off"
+                      onsubmit="return false"
+                    >
+                      <td>
+                        <br />
+                        <b>3 </b>
+                      </td>
+                      <td>
+                        <input
+                          id="table-2-row-5-column-2"
+                          class="text-inp-1"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          id="table-2-row-5-column-3"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          id="table-2-row-5-column-4"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          id="table-2-row-5-column-5"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+
+                        <button
+                          class="v-button"
+                          role="button"
+                          id="submit-13"
+                          form="form-13"
+                          onclick="confirmtable9()"
+                          disabled
+                        >
+                          Submit
+                        </button>
+                      </td>
+                    </form>
+                  </tr>
+
+                  <tr height="65px">
+                    <form
+                      action=""
+                      method="get"
+                      id="form-14"
+                      autocomplete="off"
+                      onsubmit="return false"
+                    >
+                      <td>
+                        <br />
+                        <b>4 </b>
+                      </td>
+                      <td>
+                        <input
+                          id="table-2-row-6-column-2"
+                          class="text-inp-1"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          id="table-2-row-6-column-3"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          id="table-2-row-6-column-4"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          id="table-2-row-6-column-5"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+
+                        <button
+                          class="v-button"
+                          role="button"
+                          id="submit-14"
+                          form="form-14"
+                          onclick="confirmtable10()"
+                          disabled
+                        >
+                          Submit
+                        </button>
+                      </td>
+                    </form>
+                  </tr>
+
+                  <tr height="65px">
+                    <form
+                      action=""
+                      method="get"
+                      id="form-15"
+                      autocomplete="off"
+                      onsubmit="return false"
+                    >
+                      <td>
+                        <br />
+                        <b>5 </b>
+                      </td>
+                      <td>
+                        <input
+                          id="table-2-row-7-column-2"
+                          class="text-inp-1"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          id="table-2-row-7-column-3"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          id="table-2-row-7-column-4"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          id="table-2-row-7-column-5"
+                          class="text-inp"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+
+                        <button
+                          class="v-button"
+                          role="button"
+                          id="submit-15"
+                          form="form-15"
+                          onclick="confirmtable11()"
+                          disabled
+                        >
+                          Submit
+                        </button>
+                      </td>
+                    </form>
+                  </tr>
+
+                  <tr height="65px">
+                    <form
+                      action=""
+                      method="get"
+                      id="form-16"
+                      autocomplete="off"
+                      onsubmit="return false"
+                    >
+                      <td>
+                        <br />
+                        <b>6 </b>
+                      </td>
+                      <td>
+                        <input
+                          id="table-2-row-8-column-2"
+                          class="text-inp-1"
+                          oninput="this.value = this.value.replace(/\s+/g, '')"
+                          onkeyup="replaceAlpha(this)"
+                          disabled
+                        />
+                      </td>
+
+                      <td>
+                        <!-- <input id="table-2-row-8-column-3" class="text-inp"
+											oninput="this.value = this.value.replace(/\s+/g, '')"
+											onkeyup="replaceAlpha(this)" disabled> -->
+                      </td>
+
+                      <td>
+                        <!-- <input id="table-2-row-8-column-4" class="text-inp"
+											oninput="this.value = this.value.replace(/\s+/g, '')"
+											onkeyup="replaceAlpha(this)" disabled> -->
+                      </td>
+
+                      <td>
+                        <input class="text-inp-invisible" disabled />
+                        <!-- Added this invisible input class to align the submits -->
+
+                        <button
+                          class="v-button"
+                          role="button"
+                          id="submit-16"
+                          form="form-16"
+                          onclick="confirmtable12()"
+                          disabled
+                        >
+                          Submit
+                        </button>
+                      </td>
+                    </form>
+                  </tr>
+                </table>
+              </div>
+
+              <form
+                action=""
+                method="get"
+                id="form-17"
+                autocomplete="off"
+                onsubmit="return false"
+              >
+                <br />
+                Enter the roots of the error locator polynomial <br /><br />
+                <input
+                  id="root-3"
+                  class="text-inp"
+                  oninput="this.value = this.value.replace(/\s+/g, '')"
+                  onkeyup="replaceAlpha(this)"
+                  disabled
+                />
+                <input
+                  id="root-4"
+                  class="text-inp"
+                  oninput="this.value = this.value.replace(/\s+/g, '')"
+                  onkeyup="replaceAlpha(this)"
+                  disabled
+                />
+                <input
+                  id="root-5"
+                  class="text-inp"
+                  oninput="this.value = this.value.replace(/\s+/g, '')"
+                  onkeyup="replaceAlpha(this)"
+                  disabled
+                />
+                <br />
+                <br />
+                <button
+                  class="v-button"
+                  role="button"
+                  id="submit-17"
+                  form="form-17"
+                  onclick="check5()"
+                  disabled
+                >
+                  Submit
+                </button>
+                <br />
+                <br />
+              </form>
+
+              <form
+                action=""
+                method="get"
+                id="form-18"
+                autocomplete="off"
+                onsubmit="return false"
+              >
+                <label for="decode-ex-2"> Enter the decoded codeword</label>
+                <input type="number" class="bit1" id="decode-ex-2" disabled />
+
+                <br />
+                <br />
+                <button
+                  class="v-button"
+                  role="button"
+                  id="submit-18"
+                  form="form-18"
+                  onclick="check6()"
+                  disabled
+                >
+                  Submit
+                </button>
+
+                <button
+                  class="v-button"
+                  role="button"
+                  form="form-18"
+                  onclick="previous()"
+                >
+                  Previous
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div class="column is-3-desktop is-4-tablet is-12-mobile">
+            <div class="v-datalist-container components-list">
+              <div class="v-datalist-title">Observations</div>
+              <div id="observations2"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
+      <script src="./js/decoding.js"></script>
+      <script>
+        function resetDecoding(exampleNum) {
+          if (exampleNum === 1) {
+            // Reset syndromes
+            document.getElementById("syndrome-1").value = "";
+            document.getElementById("syndrome-2").value = "";
+            document.getElementById("syndrome-3").value = "";
+            document.getElementById("syndrome-4").value = "";
+            // Reset table inputs
+            for (let i = 2; i <= 6; i++) {
+              for (let j = 2; j <= 5; j++) {
+                let id = "table-1-row-" + i + "-column-" + j;
+                let el = document.getElementById(id);
+                if (el) el.value = "";
+              }
+            }
+            // Reset roots and decoded codeword
+            document.getElementById("root-1").value = "";
+            document.getElementById("root-2").value = "";
+            document.getElementById("decode-ex-1").value = "";
+            document.getElementById("observations1").innerHTML = "";
+          } else {
+            document.getElementById("syndrome-5").value = "";
+            document.getElementById("syndrome-6").value = "";
+            document.getElementById("syndrome-7").value = "";
+            document.getElementById("syndrome-8").value = "";
+            document.getElementById("syndrome-9").value = "";
+            document.getElementById("syndrome-10").value = "";
+            for (let i = 2; i <= 8; i++) {
+              for (let j = 2; j <= 5; j++) {
+                let id = "table-2-row-" + i + "-column-" + j;
+                let el = document.getElementById(id);
+                if (el) el.value = "";
+              }
+            }
+            document.getElementById("root-3").value = "";
+            document.getElementById("root-4").value = "";
+            document.getElementById("root-5").value = "";
+            document.getElementById("decode-ex-2").value = "";
+            document.getElementById("observations2").innerHTML = "";
+          }
+        }
+      </script>
+    </body>
+  </html>
 </html>

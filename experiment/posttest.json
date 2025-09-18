@@ -1,71 +1,107 @@
 {
-    "version": 2.0,
-    "questions": [
-      {
-        "question": "In the following questions, wherever required, use the Galois fields $$\\mathbb{F}_{2^{3}} = \\{ 0, 1, \\alpha, \\alpha^{2}, \\alpha^{3} = 1+\\alpha, \\alpha^{4} = \\alpha+\\alpha^{2}, \\alpha^{5}=1+\\alpha+\\alpha^{2}, \\alpha^{6}= 1+\\alpha^{2}  \\} \\, \\text{and}$$ $$ \\begin{align*} \\mathbb{F}_{2^{4}} = \\{ & 0, 1, \\alpha, \\alpha^{2}, \\alpha^{3}, \\alpha^{4} = 1+\\alpha, \\alpha^{5} = \\alpha+\\alpha^{2}, \\alpha^{6}=\\alpha^{2}+\\alpha^{3}, \\alpha^{7}= 1+\\alpha+\\alpha^{3}, \\\\ & \\alpha^{8} = 1+\\alpha^{2}, \\alpha^{9} =\\alpha+\\alpha^{3}, \\alpha^{10}=1+\\alpha+\\alpha^{2}, \\alpha^{11}=\\alpha+\\alpha^{2}+\\alpha^{3},\\\\ & \\alpha^{12}=1+\\alpha+\\alpha^{2}+\\alpha^{3}, \\alpha^{13}=1+\\alpha^{2}+\\alpha^{3}, \\alpha^{14} = 1+\\alpha^{3} \\}. \\end{align*} $$ 1. Let $\\alpha$ be a primitive element of the Galois field $\\mathbb{F}_{2^3}$. Find the minimal polynomial of $\\alpha^{3}$",
-        "answers": {
-          "a": "$1+X+X^{3}$",
-          "b": "$1+X+X^{2}$",
-          "c": "$1+X^{2}+X^{3}$",
-          "d": "None"
-        },
-        "correctAnswer": "c",
-        "difficulty": "beginner"
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "In the following questions, wherever required, use the Galois fields $$\\mathbb{F}_{2^{3}} = \\{ 0, 1, \\alpha, \\alpha^{2}, \\alpha^{3} = 1+\\alpha, \\alpha^{4} = \\alpha+\\alpha^{2}, \\alpha^{5}=1+\\alpha+\\alpha^{2}, \\alpha^{6}= 1+\\alpha^{2}  \\} \\, \\text{and}$$ $$ \\begin{align*} \\mathbb{F}_{2^{4}} = \\{ & 0, 1, \\alpha, \\alpha^{2}, \\alpha^{3}, \\alpha^{4} = 1+\\alpha, \\alpha^{5} = \\alpha+\\alpha^{2}, \\alpha^{6}=\\alpha^{2}+\\alpha^{3}, \\alpha^{7}= 1+\\alpha+\\alpha^{3}, \\\\ & \\alpha^{8} = 1+\\alpha^{2}, \\alpha^{9} =\\alpha+\\alpha^{3}, \\alpha^{10}=1+\\alpha+\\alpha^{2}, \\alpha^{11}=\\alpha+\\alpha^{2}+\\alpha^{3},\\\\ & \\alpha^{12}=1+\\alpha+\\alpha^{2}+\\alpha^{3}, \\alpha^{13}=1+\\alpha^{2}+\\alpha^{3}, \\alpha^{14} = 1+\\alpha^{3} \\}. \\end{align*} $$ 1. Let $\\alpha$ be a primitive element of the Galois field $\\mathbb{F}_{2^3}$. Find the minimal polynomial of $\\alpha^{3}$",
+      "answers": {
+        "a": "$1+X+X^{3}$",
+        "b": "$1+X+X^{2}$",
+        "c": "$1+X^{2}+X^{3}$",
+        "d": "None"
       },
-      {
-        "question": "2. Find the generator polynomial $\\mathbf{g}(X)$ for $(7,4)$ binary primitive one error-correcting code.",
-        "answers": {
-          "a": "$1+X^{2}+X^{6}$",
-          "b": "$1+X^{3}+X^{4}++X^{6}$",
-          "c": "$1+X^{3}+X^{4}+X^{5}+X^{6}$",
-          "d": "$1+X+X^{3}$"
-        },
-        "correctAnswer": "d",
-        "difficulty": "beginner"
+      "explanations": {
+        "a": "Incorrect. This is not the minimal polynomial for $\\alpha^3$.",
+        "b": "Incorrect. This is not the minimal polynomial for $\\alpha^3$.",
+        "c": "Correct! $1+X^2+X^3$ is the minimal polynomial for $\\alpha^3$ in $\\mathbb{F}_{2^3}$.",
+        "d": "Incorrect. Option (c) is correct."
       },
-      {
-        "question": "For questions 3 and 4 consider the same example which we discussed in the theory of this experiment (Example 3). For the $(15, 5, 7)$ triple-error-correcting BCH code, suppose that $\\mathbf{v} = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]$  is transmitted, and the vector $\\mathbf{r} = [0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0]$ is received. Then $\\mathbf{r}(X) = X^{3}+X^{5}+X^{12}$. Assume that we have performed Berlekamp's iterative algorithm up to the 3rd iteration (i.e, $\\mu = 3$) and is provided in the Table 7. <img src='./images/exp9-fig7.png'></img> $\\\\$  3. The minimum-degree polynomial $\\sigma^{(4)}(X)$ determined at $\\mu=4$th iteration for the above-mentioned event is ",
-        "answers": {
-          "a": "$1+X+\\alpha^{5}X^{3}$",
-          "b": "$1+X+\\alpha^{10}X^{2}$",
-          "c": "$1+X+\\alpha^{5}X^{2}$",
-          "d": "None of the above"
-        },
-        "correctAnswer": "c",
-        "difficulty": "beginner"
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "2. Find the generator polynomial $\\mathbf{g}(X)$ for $(7,4)$ binary primitive one error-correcting code.",
+      "answers": {
+        "a": "$1+X^{2}+X^{6}$",
+        "b": "$1+X^{3}+X^{4}++X^{6}$",
+        "c": "$1+X^{3}+X^{4}+X^{5}+X^{6}$",
+        "d": "$1+X+X^{3}$"
       },
-      {
-        "question": "4. The value of the $\\rho$ at $\\mu=5 th$ iteration for the above-mentioned event is",
-        "answers": {
-          "a": "0",
-          "b": "4",
-          "c": "3",
-          "d": "2"
-        },
-        "correctAnswer": "a",
-        "difficulty": "beginner"
+      "explanations": {
+        "a": "Incorrect. This is not the generator polynomial for $(7,4)$ BCH code.",
+        "b": "Incorrect. This polynomial has an extra plus sign and does not match the required generator.",
+        "c": "Incorrect. This polynomial does not match the required generator.",
+        "d": "Correct! $1+X+X^3$ is the generator polynomial for $(7,4)$ binary primitive one error-correcting code."
       },
-      {
-        "question": "5. The single error-correcting binary primitive BCH code $(n= 2^{m}-1)$ is ",
-        "answers": {
-          "a": "Linear Block Code",
-          "b": "Cyclic code",
-          "c": "Hamming Code",
-          "d": "Above all"
-        },
-        "correctAnswer": "d",
-        "difficulty": "beginner"
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "For questions 3 and 4 consider the same example which we discussed in the theory of this experiment (Example 3). For the $(15, 5, 7)$ triple-error-correcting BCH code, suppose that $\\mathbf{v} = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]$  is transmitted, and the vector $\\mathbf{r} = [0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0]$ is received. Then $\\mathbf{r}(X) = X^{3}+X^{5}+X^{12}$. Assume that we have performed Berlekamp's iterative algorithm up to the 3rd iteration (i.e, $\\mu = 3$) and is provided in the Table 7. <img src='./images/exp9-fig7.png'></img> $\\\\$  3. The minimum-degree polynomial $\\sigma^{(4)}(X)$ determined at $\\mu=4$th iteration for the above-mentioned event is ",
+      "answers": {
+        "a": "$1+X+\\alpha^{5}X^{3}$",
+        "b": "$1+X+\\alpha^{10}X^{2}$",
+        "c": "$1+X+\\alpha^{5}X^{2}$",
+        "d": "None of the above"
       },
-      {
-        "question": "6. Consider the double-error correcting $(15, 7)$ BCH code. Assume that the codeword of all zeros $ \\mathbf{v} = [0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0]$ is transmitted and the received the vector $ \\mathbf{r} = [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]$. Find the error-location polynomial $\\sigma(X)$, and values of $d_2, d_{3}$ by using Berlekamp's iterative algorithm.<img src='./images/exp9-fig6.png'></img>",
-        "answers": {
-          "a": "$\\sigma(X) = \\alpha^{7} + \\alpha^{9} X+ X^{2}$ and $d_2 = \\alpha^{6}, d_{3} = \\alpha^{3}$",
-          "b": "$\\sigma(X) = 1 + \\alpha^{2} X + \\alpha^{9} X^{2}$ and $d_2 =\\alpha^{11}, d_{3} = \\alpha$",
-          "c": "$\\sigma(X) = 1 + \\alpha^{2} X+ \\alpha^{8} X^{2}$ and $d_2 = \\alpha^{10}, d_{3} = 0$",
-          "d": "$\\sigma(X) = 1 + \\alpha X + \\alpha^{5} X^{2}$ and $d_2=0, d_{3}=\\alpha^{3}$"
-        },
-        "correctAnswer": "c",
-        "difficulty": "beginner"
-      }
-    ]
-  }
+      "explanations": {
+        "a": "Incorrect. The polynomial does not match the minimum-degree polynomial at $\\mu=4$.",
+        "b": "Incorrect. The polynomial does not match the minimum-degree polynomial at $\\mu=4$.",
+        "c": "Correct! This is the minimum-degree polynomial $\\sigma^{(4)}(X)$ at $\\mu=4$.",
+        "d": "Incorrect. Option (c) is correct."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "4. The value of the $\\rho$ at $\\mu=5 th$ iteration for the above-mentioned event is",
+      "answers": {
+        "a": "0",
+        "b": "4",
+        "c": "3",
+        "d": "2"
+      },
+      "explanations": {
+        "a": "Correct! The value of $\\rho$ at $\\mu=5$ is 0.",
+        "b": "Incorrect. The value of $\\rho$ at $\\mu=5$ is not 4.",
+        "c": "Incorrect. The value of $\\rho$ at $\\mu=5$ is not 3.",
+        "d": "Incorrect. The value of $\\rho$ at $\\mu=5$ is not 2."
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "5. The single error-correcting binary primitive BCH code $(n= 2^{m}-1)$ is ",
+      "answers": {
+        "a": "Linear Block Code",
+        "b": "Cyclic code",
+        "c": "Hamming Code",
+        "d": "Above all"
+      },
+      "explanations": {
+        "a": "Incorrect. It is also cyclic and a Hamming code.",
+        "b": "Incorrect. It is also a linear block code and a Hamming code.",
+        "c": "Incorrect. It is also a linear block code and a cyclic code.",
+        "d": "Correct! The single error-correcting BCH code is a linear block code, cyclic code, and Hamming code."
+      },
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "6. Consider the double-error correcting $(15, 7)$ BCH code. Assume that the codeword of all zeros $ \\mathbf{v} = [0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0]$ is transmitted and the received the vector $ \\mathbf{r} = [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]$. Find the error-location polynomial $\\sigma(X)$, and values of $d_2, d_{3}$ by using Berlekamp's iterative algorithm.<img src='./images/exp9-fig6.png'></img>",
+      "answers": {
+        "a": "$\\sigma(X) = \\alpha^{7} + \\alpha^{9} X+ X^{2}$ and $d_2 = \\alpha^{6}, d_{3} = \\alpha^{3}$",
+        "b": "$\\sigma(X) = 1 + \\alpha^{2} X + \\alpha^{9} X^{2}$ and $d_2 =\\alpha^{11}, d_{3} = \\alpha$",
+        "c": "$\\sigma(X) = 1 + \\alpha^{2} X+ \\alpha^{8} X^{2}$ and $d_2 = \\alpha^{10}, d_{3} = 0$",
+        "d": "$\\sigma(X) = 1 + \\alpha X + \\alpha^{5} X^{2}$ and $d_2=0, d_{3}=\\alpha^{3}$"
+      },
+      "explanations": {
+        "a": "Incorrect. The error-location polynomial and $d_2, d_3$ values do not match the solution.",
+        "b": "Incorrect. The error-location polynomial and $d_2, d_3$ values do not match the solution.",
+        "c": "Correct! This is the correct error-location polynomial and $d_2, d_3$ values for the given received vector.",
+        "d": "Incorrect. The error-location polynomial and $d_2, d_3$ values do not match the solution."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    }
+  ]
+}
