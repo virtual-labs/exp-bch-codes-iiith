@@ -1,1 +1,116 @@
-/* You CSS goes in here */
+.window {
+    z-index: 20;
+}
+
+.jtk-connector {
+    z-index: 4;
+}
+
+.jtk-endpoint {
+    z-index: 5;
+}
+
+.jtk-overlay {
+    z-index: 6;
+}
+
+/* disabling text selection */
+body {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+img {
+    -drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+text {
+    pointer-events: none;
+}
+
+h1 {
+    margin-left: auto;
+    margin-right: auto;
+
+    font-size: 2em;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
+.container {
+    margin-top: 1%;
+}
+
+.column {
+    text-align: center;
+}
+
+.components-list {
+    padding: 2% 5%;
+    text-align: center;
+    height: 100%;
+    overflow-y: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: start;
+    justify-content: center;
+    padding: 10px;
+    font-weight: 500;
+}
+
+.v-instruction-container {
+    border: .2rem solid #97d23d;
+    justify-content: flex-start;
+}
+
+#observations,
+#observations1,
+#observations2 {
+    font-size: 1.25em;
+}
+
+.box-question {
+    border: solid black;
+    padding: 1%;
+}
+
+.bit {
+    height: 2.5em;
+    width: 2.5em;
+    padding-left: 0.8em;
+    border: solid black;
+    border-radius: 0.5em;
+    background-color: #fff;
+    font-size: 1em;
+    color: blue;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}

@@ -1,0 +1,49 @@
+.text-inp {
+    height: 2.5em;
+    width: 15em;
+    margin-top: 1em;
+    border: solid black;
+    border-radius: 0.5em;
+    background-color: #fff;
+    font-size: 1.25em;
+    color: blue;
+    text-align: center;
+}
+
+
+.mathfield{
+    justify-content: center;
+    display: inline-block;
+    align-items: center;
+}
+
+
+.button-1 {
+    height: 2.5em;
+    width: 10em;
+    display: inline-block;
+    padding: auto;
+    background-color: rgb(200, 200, 200);
+    border: 0.1em solid transparent;
+    margin: 0 0.2em 0.2em 0;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-size: 1.25em;
+    font-family: sans-serif;
+    font-weight: 500;
+    color: #ffff;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.button-1:hover {
+    cursor: pointer;
+}
+
+.polynomial {
+    padding-left: 2.5em;
+    padding-right: 2.5em;
+    margin-bottom: 1em;
+    display: inline-flex;
+}

@@ -1,13 +1,454 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<!-- Add CSS at the head of HTML file -->
-    <link rel="stylesheet" href="./css/main.css">
-</head>
-<body>
-		<!-- Your code goes here-->
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css"
+      />
+      <link rel="stylesheet" href="./css/main.css" />
+      <link rel="stylesheet" href="./css/generator-polynomial.css" />
 
-	<!-- Add JS at the bottom of HTML file --> 
-        <script src="./js/main.js"></script>
-</body>
+      <title>Generator Polynomial</title>
+    </head>
+
+    <body>
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-one-quarter v-instruction-title">Tasks</div>
+          <div class="column">
+            <div class="v-tabs">
+              <ul>
+                <li class="is-active" id="Task1">
+                  <a> Generator Polynomial </a>
+                </li>
+
+                <li
+                  id="Task2"
+                  onclick="window.location.href = 'decoding.html';"
+                >
+                  <a> Decoding </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column">
+            <div
+              class="v-collapsible-instruction-container v-instruction-container"
+            >
+              <div class="v-collapsible is-size-5">Instructions</div>
+              <div
+                class="v-content"
+                style="text-align: left; padding-left: 10%; padding-right: 10%"
+              >
+                <ul style="list-style: disc">
+                  <b>Quick theory overview:</b>
+
+                  <li>
+                    The generator polynomial of a t-error correcting is the LCM
+                    of the minimal polynomials of the elements α, α<sup>2</sup>,
+                    ..., α<sup>2t</sup>.
+                  </li>
+                  <li>
+                    Refer to the following table <br />
+                    <img
+                      id="image"
+                      src="./images/minimal-polynomial-table.jpg"
+                    />
+                  </li>
+                </ul>
+
+                <br />
+
+                <ul style="list-style: disc">
+                  <b>Procedure:</b>
+                  <li>
+                    Initially, all the polynomials are in grey background.
+                  </li>
+                  <li>
+                    Clicking on polynomial changes its background color to from
+                    grey to green. All the polynomials with green background are
+                    the selected polynomials.
+                  </li>
+                  <li>
+                    To deselect a polynomial, click on it again. Its background
+                    color changes back to grey.
+                  </li>
+                  <li>
+                    Select all the minimal polynomials and click on
+                    <b>Submit</b>.
+                  </li>
+                  <li>
+                    <b>Observations</b> section displays whether all the correct
+                    polynomials are selected or not.
+                  </li>
+                  <li>
+                    If all the correct minimal polynomials have been selected, a
+                    field to enter the generator polynomial will be displayed.
+                  </li>
+                  <li>
+                    Use only <b>lower case</b> x in the field. Expressions like
+                    x<sup>2</sup> can be entered in the field by typing x^2 on
+                    the keyboard.
+                  </li>
+                  <li>
+                    1, +, x, x^2, x^3, ..., x^10 and their combinations need to
+                    be entered in the field in this task. Do not enter any other
+                    symbols.
+                  </li>
+                  <li>
+                    Enter the polynomials in either increasing order of degree
+                    (from the lowest degree term to the highest) or decreasing
+                    order of degree (from the highest degree term to the
+                    lowest). For example, only 1+x^2+x^7+x^8 or x^8+x^7+x^2+1 is
+                    allowed. Any other permutation is not allowed. For example
+                    x^7+1+x^2+x^8 is not allowed.
+                  </li>
+                  <li>
+                    Enter the encoding polynomial in the field and click on
+                    <b>Submit</b>.
+                  </li>
+                  <li>
+                    The correctness of the entered answer is displayed in
+                    <b>Observations</b>.
+                  </li>
+                  <li><b>Next</b> - Displays the next example.</li>
+                  <li><b>Previous</b> - Displays the previous example.</li>
+                  <li>
+                    <b>Reset</b> - Clears all selected polynomials, input
+                    fields, and empties the Observations section for the current
+                    example. Use this to start over or try a different
+                    selection.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <section id="example1">
+        <div class="columns is-centered">
+          <div class="column is-11-desktop is-12-tablet is-12-mobile">
+            <div class="v-datalist-container components-list">
+              <br />
+              <p>
+                Consider the <b>2</b>-error correcting BCH code of length 15
+                defined over GF(2<sup>4</sup>) generated by the polynomial
+                x<sup>4</sup>+x+1.
+              </p>
+              <br />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="columns is-centered is-flex-direction-row is-flex-wrap-wrap is-align-content-start"
+          style="margin-top: -1.5%"
+        >
+          <div class="column is-8-desktop is-12-tablet is-12-mobile">
+            <div class="box-question">
+              <br />
+              Select the minimal polynomials
+              <br />
+              <br />
+              <div class="polynomial">
+                <button class="button-1" id="ex1-p1" onClick="change1(id)">
+                  x
+                </button>
+              </div>
+
+              <div class="polynomial">
+                <button class="button-1" id="ex1-p2" onClick="change1(id)">
+                  x + 1
+                </button>
+              </div>
+
+              <div class="polynomial">
+                <button class="button-1" id="ex1-p3" onClick="change1(id)">
+                  x<sup>4</sup> + x + 1
+                </button>
+              </div>
+
+              <div class="polynomial">
+                <button class="button-1" id="ex1-p4" onClick="change1(id)">
+                  x<sup>4</sup> + x<sup>3</sup> + x<sup>2</sup> + x + 1
+                </button>
+              </div>
+
+              <div class="polynomial">
+                <button class="button-1" id="ex1-p5" onClick="change1(id)">
+                  x<sup>2</sup> + x + 1
+                </button>
+              </div>
+
+              <div class="polynomial">
+                <button class="button-1" id="ex1-p6" onClick="change1(id)">
+                  x<sup>4</sup> + x<sup>3</sup> + 1
+                </button>
+              </div>
+
+              <div style="display: inline-flex">
+                <button
+                  class="v-button"
+                  role="button"
+                  id="submit-1"
+                  onclick="check1()"
+                >
+                  Submit
+                </button>
+                &nbsp;
+                <button
+                  class="v-button"
+                  role="button"
+                  id="next-1"
+                  onclick="page2()"
+                >
+                  Next
+                </button>
+                &nbsp;
+                <button
+                  class="v-button"
+                  role="button"
+                  id="reset-1"
+                  onclick="resetGeneratorPoly(1)"
+                >
+                  Reset
+                </button>
+              </div>
+
+              <br />
+              <div id="example1-part2" style="display: none">
+                <form
+                  action=""
+                  id="form1"
+                  method="get"
+                  autocomplete="off"
+                  onsubmit="return false"
+                >
+                  <div class="mathfield">
+                    Enter the generator polynomial <b>g(x)</b> corresponding to
+                    t=2
+                    <input
+                      id="math-field-1"
+                      class="text-inp"
+                      oninput="this.value = this.value.replace(/\s+/g, '')"
+                    />
+                  </div>
+                </form>
+                <br />
+                <button
+                  class="v-button"
+                  role="button"
+                  form="form1"
+                  onclick="verify1()"
+                >
+                  Submit
+                </button>
+                <button
+                  class="v-button"
+                  role="button"
+                  id="next-2"
+                  onclick="page2()"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="column is-3-desktop is-4-tablet is-12-mobile">
+            <div class="v-datalist-container components-list">
+              <div class="v-datalist-title">Observations</div>
+              <div id="observations1"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="example2" style="display: none">
+        <div class="columns is-centered">
+          <div class="column is-11-desktop is-12-tablet is-12-mobile">
+            <div class="v-datalist-container components-list">
+              <br />
+              <p>
+                Consider the <b>3</b>-error correcting BCH code of length 15
+                defined over GF(2<sup>4</sup>) generated by the polynomial
+                x<sup>4</sup>+x+1.
+              </p>
+              <br />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="columns is-centered is-flex-direction-row is-flex-wrap-wrap is-align-content-start"
+          style="margin-top: -1.5%"
+        >
+          <div class="column is-8-desktop is-12-tablet is-12-mobile">
+            <div class="box-question">
+              <br />
+              Select the minimal polynomials
+              <br />
+              <br />
+              <div class="polynomial">
+                <button class="button-1" id="ex2-p1" onClick="change2(id)">
+                  x
+                </button>
+              </div>
+
+              <div class="polynomial">
+                <button class="button-1" id="ex2-p2" onClick="change2(id)">
+                  x + 1
+                </button>
+              </div>
+
+              <div class="polynomial">
+                <button class="button-1" id="ex2-p3" onClick="change2(id)">
+                  x<sup>4</sup> + x + 1
+                </button>
+              </div>
+
+              <div class="polynomial">
+                <button class="button-1" id="ex2-p4" onClick="change2(id)">
+                  x<sup>4</sup> + x<sup>3</sup> + x<sup>2</sup> + x + 1
+                </button>
+              </div>
+
+              <div class="polynomial">
+                <button class="button-1" id="ex2-p5" onClick="change2(id)">
+                  x<sup>2</sup> + x + 1
+                </button>
+              </div>
+
+              <div class="polynomial">
+                <button class="button-1" id="ex2-p6" onClick="change2(id)">
+                  x<sup>4</sup> + x<sup>3</sup> + 1
+                </button>
+              </div>
+
+              <div style="display: inline-flex">
+                <button
+                  class="v-button"
+                  role="button"
+                  id="submit-2"
+                  onclick="check2()"
+                >
+                  Submit
+                </button>
+                &nbsp;
+                <button
+                  class="v-button"
+                  role="button"
+                  id="previous-1"
+                  onclick="page1()"
+                >
+                  Previous
+                </button>
+                &nbsp;
+                <button
+                  class="v-button"
+                  role="button"
+                  id="reset-2"
+                  onclick="resetGeneratorPoly(2)"
+                >
+                  Reset
+                </button>
+              </div>
+              <br />
+              <div id="example2-part2" style="display: none">
+                <form
+                  action=""
+                  id="form2"
+                  method="get"
+                  autocomplete="off"
+                  onsubmit="return false"
+                >
+                  <div class="mathfield">
+                    Enter the generator polynomial <b>g(x)</b> corresponding to
+                    t=3
+                    <input
+                      id="math-field-2"
+                      class="text-inp"
+                      oninput="this.value = this.value.replace(/\s+/g, '')"
+                    />
+                  </div>
+                </form>
+                <br />
+                <button
+                  class="v-button"
+                  role="button"
+                  form="form2"
+                  onclick="verify2()"
+                >
+                  Submit
+                </button>
+                <button
+                  class="v-button"
+                  role="button"
+                  id="previous-2"
+                  onclick="page1()"
+                >
+                  Previous
+                </button>
+                &nbsp;
+                <button
+                  class="v-button"
+                  role="button"
+                  id="reset-2"
+                  onclick="resetGeneratorPoly(2)"
+                >
+                  Reset
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="column is-3-desktop is-4-tablet is-12-mobile">
+            <div class="v-datalist-container components-list">
+              <div class="v-datalist-title">Observations</div>
+              <div id="observations2"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
+      <script src="./js/generator-polynomial.js"></script>
+      <script>
+        function resetGeneratorPoly(exampleNum) {
+          if (exampleNum === 1) {
+            // Reset polynomial buttons
+            for (let i = 1; i <= 6; i++) {
+              document.getElementById("ex1-p" + i).style.background =
+                "rgb(200, 200, 200)";
+            }
+            // Hide part2, enable submit, show next
+            document.getElementById("example1-part2").style.display = "none";
+            document.getElementById("submit-1").removeAttribute("disabled");
+            document.getElementById("next-1").style.display = "block";
+            document.getElementById("form1").reset();
+            document.getElementById("observations1").innerHTML = "";
+          } else {
+            for (let i = 1; i <= 6; i++) {
+              document.getElementById("ex2-p" + i).style.background =
+                "rgb(200, 200, 200)";
+            }
+            document.getElementById("example2-part2").style.display = "none";
+            document.getElementById("submit-2").removeAttribute("disabled");
+            document.getElementById("previous-1").style.display = "block";
+            document.getElementById("form2").reset();
+            document.getElementById("observations2").innerHTML = "";
+          }
+        }
+      </script>
+    </body>
+  </html>
 </html>
